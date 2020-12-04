@@ -1,0 +1,39 @@
+﻿<Window x:Class="Capital_Risk_Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Capital_Risk_Calculator"
+        mc:Ignorable="d"
+        Title="Capital Risk Calculator" Height="500" Width="800" ResizeMode="CanMinimize">
+    <Canvas Background="DarkSeaGreen">
+        <TextBox Name="txtCapital" VerticalContentAlignment="Center" Width="100" Height="25" Canvas.Left="120" Canvas.Top="75" ></TextBox>
+        <TextBox Name="txtRisk" VerticalContentAlignment="Center" Width="100" Height="25" Canvas.Right="120" Canvas.Top="120" Canvas.Left="120"></TextBox>
+        <TextBox Name="txtEntryPrice" VerticalContentAlignment="Center" Width="100" Height="25" Canvas.Right="120" Canvas.Top="75" Canvas.Left="655"></TextBox>
+        <TextBox Name="txtStopPrice" VerticalContentAlignment="Center" Width="100" Height="25" Canvas.Right="120" Canvas.Top="120" Canvas.Left="655"></TextBox>
+        <TextBox Name="txtLimitPrice" VerticalContentAlignment="Center" Width="100" Height="25" Canvas.Right="120" Canvas.Top="165" Canvas.Left="655"></TextBox>
+
+        <TextBox Name="txtNumShares" IsReadOnly="True" VerticalContentAlignment="Center" Width="100" Height="25" Canvas.Left="120" Canvas.Top="250"></TextBox>
+        <TextBox Name="txtReturnOnCapital" IsReadOnly="True" VerticalContentAlignment="Center" Width="100" Height="25" Canvas.Left="120" Canvas.Top="299"></TextBox>
+        <TextBox Name="txtProfitPerShare" IsReadOnly="True" VerticalContentAlignment="Center" Width="100" Height="25" Canvas.Right="120" Canvas.Bottom="175" Canvas.Left="655" Canvas.Top="251"
+                 Text=""></TextBox>
+        <TextBox Name="txtStopLossPerShare" IsReadOnly="True" VerticalContentAlignment="Center" Width="100" Height="25" Canvas.Right="120" Canvas.Top="299" Canvas.Left="655"></TextBox>
+        <TextBox Name="txtReturnRiskRatio" IsReadOnly="True" VerticalContentAlignment="Center" Width="100" Height="25" Canvas.Right="120" Canvas.Top="349" Canvas.Left="655"></TextBox>
+
+        <TextBlock Name="tblBackground" FontSize="512" FontWeight="ExtraBold" FontStyle="Italic" Canvas.Left="240" Canvas.Bottom="151" Canvas.Top="-163">
+            <TextBlock.Foreground>
+                <SolidColorBrush Opacity=".25" Color="DarkGreen"></SolidColorBrush>
+            </TextBlock.Foreground>$</TextBlock>
+        <TextBlock Name="tblCapital" FontSize="16" Canvas.Left="60" Canvas.Top="75">Capital:</TextBlock>
+        <TextBlock Name="tblRisk" FontSize="16" Canvas.Right="225" Canvas.Top="120" Canvas.Left="81">Risk:</TextBlock>
+        <TextBlock Name="tblNumShares" TextWrapping="Wrap" FontSize="16" Canvas.Left="40" Canvas.Bottom="160" Canvas.Top="240" Height="46" Width="72">Number of Shares:</TextBlock>
+        <TextBlock Name="tblReturnOnCapital" TextWrapping="Wrap" FontSize="16" Canvas.Left="40" Canvas.Bottom="120" Canvas.Top="288" Height="46" Width="72">Return on Capial:</TextBlock>
+        <TextBlock Name="tblEntryPrice" FontSize="16" Canvas.Right="150" Canvas.Top="75" Canvas.Left="572">Entry Price:</TextBlock>
+        <TextBlock Name="tblStopPrice" FontSize="16" Canvas.Right="150" Canvas.Top="120" Canvas.Left="576">Stop Price:</TextBlock>
+        <TextBlock Name="tblLimitPrice" FontSize="16" Canvas.Right="150" Canvas.Top="167" Canvas.Left="573">Limit Price:</TextBlock>
+        <TextBlock Name="tblProfitPerShare" FontSize="16" Canvas.Right="150" Canvas.Top="252" Canvas.Left="559">Profit/Share:</TextBlock>
+        <TextBlock Name="tblStopLossPerShare" FontSize="16" Canvas.Right="150" Canvas.Top="301" Canvas.Left="530">Stop Loss/Share:</TextBlock>
+        <TextBlock Name="tblReturnRiskRatio" FontSize="16" Canvas.Right="150" Canvas.Top="351" Canvas.Left="521">Return/Risk Ratio:</TextBlock>
+        <Button Name="btnCalculate" Width="250" Height="50" FontSize="24" Canvas.Left="268" Canvas.Top="374" Click="btnCalculate_Click">Calculate!</Button>
+    </Canvas>
+</Window>
