@@ -28,23 +28,39 @@ namespace Capital_Risk_Calculator
 
         private void btnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            float capital = float.Parse(txtCapital.Text);
-            float risk = float.Parse(txtRisk.Text) / 100;
-            float entryPrice = float.Parse(txtEntryPrice.Text);
-            float limitPrice = float.Parse(txtLimitPrice.Text);
-            float stopPrice = float.Parse(txtStopPrice.Text);
+            tblHighRiskLowReturn.Visibility = Visibility.Hidden;
+            tblHighRiskLowReturn.Background = Brushes.White;
+            try
+            {
+                float capital = float.Parse(txtCapital.Text);
+                float risk = float.Parse(txtRisk.Text) / 100;
+                float entryPrice = float.Parse(txtEntryPrice.Text);
+                float limitPrice = float.Parse(txtLimitPrice.Text);
+                float stopPrice = float.Parse(txtStopPrice.Text);
 
-            float profitPerShare = Math.Abs(limitPrice - entryPrice);
-            float lossPerShare = Math.Abs(entryPrice - stopPrice);
-            float returnRiskRatio = profitPerShare / lossPerShare;
-            float numOfShares = (capital / lossPerShare) * risk;
-            float returnOnCapital = profitPerShare * numOfShares;
+                float profitPerShare = Math.Abs(limitPrice - entryPrice);
+                float lossPerShare = Math.Abs(entryPrice - stopPrice);
+                float returnRiskRatio = lossPerShare == 0 ? profitPerShare : profitPerShare / lossPerShare;
+                if (returnRiskRatio < 2)
+                {
+                    txtReturnRiskRatio.Background = Brushes.Red;
+                    tblHighRiskLowReturn.Visibility = Visibility.Visible;
+                }
+                float numOfShares = lossPerShare == 0 ?  Math.Min((capital * risk), (capital / entryPrice)) : Math.Min(((capital / lossPerShare) * risk), (capital / entryPrice));
+                float returnOnCapital = profitPerShare * numOfShares;
 
-            txtProfitPerShare.Text = profitPerShare.ToString();
-            txtStopLossPerShare.Text = lossPerShare.ToString();
-            txtReturnRiskRatio.Text = returnRiskRatio.ToString();
-            txtNumShares.Text = numOfShares.ToString();
-            txtReturnOnCapital.Text = returnOnCapital.ToString();
+                txtProfitPerShare.Text = profitPerShare.ToString();
+                txtStopLossPerShare.Text = lossPerShare.ToString();
+                txtReturnRiskRatio.Text = returnRiskRatio.ToString();
+                txtNumShares.Text = numOfShares.ToString();
+                txtReturnOnCapital.Text = returnOnCapital.ToString();
+            }
+
+            catch (FormatException ex)
+            {
+                MessageBox.Show($"{ex.Message}\n\nOnly input numbers. Do not use letters or symbols ($,%,!,?).", "Unaccepted Input", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
+
     }
 }
